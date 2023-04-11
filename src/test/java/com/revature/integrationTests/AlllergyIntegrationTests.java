@@ -46,7 +46,7 @@ public class AlllergyIntegrationTests {
 				String.class);
 		ObjectMapper mapper = mapperBuilder.build();
 		AllergyDto found=mapper.readValue(response.getBody(), AllergyDto.class);
-		Assertions.assertEquals("smoke", found.getAllergyName());
+		Assertions.assertEquals("Pet Allergy", found.getAllergyName());
 
 	}
 	
@@ -57,7 +57,7 @@ public class AlllergyIntegrationTests {
 		ResponseEntity<List<AllergyDto>> response = restTemplate.exchange(createURLWithPort("/api/v1/allergy"), HttpMethod.GET, entity,
 				new ParameterizedTypeReference<List<AllergyDto>>() {});
 		List<AllergyDto> found= response.getBody();
-		Assertions.assertEquals(2,found.size());
+		Assertions.assertEquals(8,found.size());
 
 	}
 	private String createURLWithPort(String uri) {
